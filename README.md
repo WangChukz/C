@@ -1,2 +1,0 @@
-# C
-Excersise of C
