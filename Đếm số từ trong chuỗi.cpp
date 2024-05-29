@@ -1,10 +1,6 @@
  #include <stdio.h>
 #include <string.h>
 
-
-// Input: NgUyEn HoAnG PHUc
-// Output: Nguyen Hoang Phuc
-
 void nhap(char s[]) {
 	printf("Nhap vao mot chuoi cac ky tu (toi da 100 tu): ");
 	gets(s);
@@ -29,7 +25,6 @@ int demtu(char s[]) {
 	return dem;
 }
 
-
 void hienthi(char s[]) {
 	printf("So tu co trong chuoi la: %d", demtu(s));
 }
@@ -39,5 +34,31 @@ int main() {
 	nhap(s);
 	demtu(s);
 	hienthi(s);
-
 }
+
+// cách 2:
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+bool khoangtrang(char c) {
+	return c == ' ' || c == '\t' || c == '\n';
+}
+
+int count(char s[]){
+    int dem = 0, n = strlen(s);
+    for(int i = 0; i < n; i++){
+        if(!khoangtrang(s[i])){
+            ++dem; 
+            while(!khoangtrang(s[i])) i++;
+        }
+    }
+    return dem;
+}
+
+int main(){
+    char s[1000];
+    gets(s);
+    printf("So luong tu trong xau : %d\n", count(s));
+    return 0;
+}
+
